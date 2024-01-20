@@ -1,9 +1,9 @@
-**Contact Management App**
+# Contact Management App
 
 This React application serves as a straightforward contact management system,
 offering essential features for adding, searching, and deleting contacts.
 
-**Features**
+## Features
 
 1. **Add Contacts:** Use the provided form to easily add new contacts, including
    names and phone numbers.
@@ -14,7 +14,7 @@ offering essential features for adding, searching, and deleting contacts.
 3. **Contact Deletion:** Conveniently delete contacts that are no longer needed,
    enhancing the user's control over their contact list.
 
-**Usage**
+## Usage
 
 - **Adding New Contacts:**
 
@@ -36,7 +36,7 @@ offering essential features for adding, searching, and deleting contacts.
   - Look for a delete or remove option associated with each contact.
   - Click on the delete option to remove unwanted contacts from your list.
 
-**Project Structure**
+## Project Structure
 
 The project structure follows a modular approach with the following components:
 
