@@ -76,7 +76,7 @@ export default class App extends Component {
               addContact={this.addContact}
               contacts={this.state.contacts}
             />
-            <h2>Contacts</h2>
+            <h2 className="mt-3">Contacts</h2>
             <Filter value={filter} onChange={this.handleFilterChange} />
             <ContactList
               contacts={filteredContacts}
