@@ -1,11 +1,16 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Form from 'react-bootstrap/Form';
 import FloatingLabel from 'react-bootstrap/FloatingLabel';
 
+/**
+ * ContactForm component for adding new contacts.
+ */
 export class ContactForm extends Component {
   constructor(props) {
     super(props);
@@ -19,11 +24,19 @@ export class ContactForm extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
-  handleChange = e => {
+  /**
+   * Handle input change for name and number fields.
+   * @param {Object} e - The event object.
+   */
+  handleChange(e) {
     this.setState({ [e.target.name]: e.target.value });
-  };
+  }
 
-  handleFormSubmit = e => {
+  /**
+   * Handle form submission for adding a new contact.
+   * @param {Object} e - The event object.
+   */
+  handleFormSubmit(e) {
     e.preventDefault();
 
     const { name, number } = this.state;
@@ -43,7 +56,7 @@ export class ContactForm extends Component {
     addContact(newContact);
 
     this.setState({ name: '', number: '' });
-  };
+  }
 
   render() {
     const { name, number } = this.state;
@@ -100,3 +113,9 @@ export class ContactForm extends Component {
     );
   }
 }
+
+// PropTypes
+ContactForm.propTypes = {
+  contacts: PropTypes.array.isRequired,
+  addContact: PropTypes.func.isRequired,
+};

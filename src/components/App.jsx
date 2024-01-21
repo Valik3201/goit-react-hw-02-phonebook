@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
@@ -9,6 +10,9 @@ import Container from 'react-bootstrap/Container';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 
+/**
+ * Main application component representing the Phonebook.
+ */
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -28,21 +32,33 @@ export default class App extends Component {
     this.handleDeleteContact = this.handleDeleteContact.bind(this);
   }
 
-  addContact = newContact => {
+  /**
+   * Add a new contact to the state.
+   * @param {Object} newContact - The new contact to be added.
+   */
+  addContact(newContact) {
     this.setState(prevState => ({
       contacts: [...prevState.contacts, newContact],
     }));
-  };
+  }
 
-  handleFilterChange = e => {
+  /**
+   * Handle changes in the filter input.
+   * @param {Object} e - The event object.
+   */
+  handleFilterChange(e) {
     this.setState({ filter: e.target.value.toLowerCase() });
-  };
+  }
 
-  handleDeleteContact = contactId => {
+  /**
+   * Handle the deletion of a contact.
+   * @param {string} contactId - The ID of the contact to be deleted.
+   */
+  handleDeleteContact(contactId) {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== contactId),
     }));
-  };
+  }
 
   render() {
     const { contacts, filter } = this.state;
@@ -52,8 +68,8 @@ export default class App extends Component {
     );
 
     return (
-      <Container className="d-flex  justify-content-center mt-5 mb-5">
-        <Row className="justify-content-md-center ">
+      <Container className="d-flex justify-content-center mt-5 mb-5">
+        <Row className="justify-content-md-center">
           <Col>
             <h1>Phonebook</h1>
             <ContactForm
@@ -72,3 +88,9 @@ export default class App extends Component {
     );
   }
 }
+
+// PropTypes
+App.propTypes = {
+  contacts: PropTypes.array,
+  filter: PropTypes.string,
+};
