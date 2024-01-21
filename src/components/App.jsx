@@ -3,12 +3,23 @@ import { ContactForm } from './ContactForm';
 import { ContactList } from './ContactList';
 import { Filter } from './Filter';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Container from 'react-bootstrap/Container';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+
 export default class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      contacts: [],
+      contacts: [
+        { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+        { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+        { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+        { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      ],
       filter: '',
     };
 
@@ -41,29 +52,23 @@ export default class App extends Component {
     );
 
     return (
-      <div
-        style={{
-          height: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          fontSize: 40,
-          color: '#010101',
-        }}
-      >
-        Phonebook
-        <ContactForm
-          addContact={this.addContact}
-          contacts={this.state.contacts}
-        />
-        Contacts
-        <Filter value={filter} onChange={this.handleFilterChange} />
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={this.handleDeleteContact}
-        />
-      </div>
+      <Container className="d-flex  justify-content-center mt-5 mb-5">
+        <Row className="justify-content-md-center ">
+          <Col>
+            <h1>Phonebook</h1>
+            <ContactForm
+              addContact={this.addContact}
+              contacts={this.state.contacts}
+            />
+            <h2>Contacts</h2>
+            <Filter value={filter} onChange={this.handleFilterChange} />
+            <ContactList
+              contacts={filteredContacts}
+              onDeleteContact={this.handleDeleteContact}
+            />
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
